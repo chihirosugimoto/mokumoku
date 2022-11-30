@@ -46,6 +46,11 @@
         <div class="card-body">
           <%= simple_format @event.content %>
         </div>
+        <% if @event.only_woman?%>
+        <div class="card-footer">
+        女性限定
+        </div>
+        <% end %>
       </div>
     </div>
     <div class="col-12 col-md-4">
@@ -93,12 +98,23 @@
                               data: { confirm: 'キャンセルします' }
                   %>
                 <% else %>
-                  <%= link_to 'このもくもく会に参加する',
-                              event_attendance_url(@event),
-                              class: 'btn btn-primary',
-                              method: :post,
-                              data: { confirm: '申し込みます' }
-                  %>
+                <% if @event.only_woman?%>>
+                  <% if current_user.woman? %>
+                    <%= link_to 'このもくもく会に参加する',
+                                event_attendance_url(@event),
+                                class: 'btn btn-primary',
+                                method: :post,
+                                data: { confirm: '申し込みます' }
+                    %>
+                    <% end %>
+                <% else %>
+                <%= link_to 'このもくもく会に参加する',
+                                event_attendance_url(@event),
+                                class: 'btn btn-primary',
+                                method: :post,
+                                data: { confirm: '申し込みます' }
+                    %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
