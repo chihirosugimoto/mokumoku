@@ -106,6 +106,8 @@
                                 method: :post,
                                 data: { confirm: '申し込みます' }
                     %>
+                  <% else %>
+                    参加できません
                     <% end %>
                 <% else %>
                 <%= link_to 'このもくもく会に参加する',
