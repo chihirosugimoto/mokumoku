@@ -36,8 +36,11 @@ gem 'sorcery'
 
 gem 'factory_bot_rails'
 gem 'faker'
-
+gem 'capybara'
 gem 'enum_help'
+gem 'simplecov', require: false, group: :test
+gem 'selenium-webdriver'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
