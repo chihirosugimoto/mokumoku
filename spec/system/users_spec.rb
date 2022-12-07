@@ -19,22 +19,7 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content('もくもく会を作る')
       end
 
-      it 'Sign up時に性別を選ばないで登録すると、LGBTとして登録される。' do
-        visit signup_path
-        fill_in 'Name', with: 'らんてくん'
-        fill_in 'Email', with: 'sample@example.com'
-        fill_in 'Password', with: 'password'
-        fill_in 'Password confirmation', with: 'password'
-        click_button '登録'
-
-        visit login_path
-        fill_in 'email', with: 'sample@example.com'
-        fill_in 'password', with: 'password'
-        click_button 'ログイン'
-
-        expect(page).to have_content('もくもく会を作る')
-        expect(User.last.gender).to eq 'LGBT'
-      end
+      
 
       it 'Sign up時に性別(男性)を選んで登録することができる。' do
         visit signup_path
