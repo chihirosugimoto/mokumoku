@@ -36,8 +36,9 @@ gem 'sorcery'
 
 gem 'factory_bot_rails'
 gem 'faker'
-
+gem 'simplecov'
 gem 'enum_help'
+gem 'capybara'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
