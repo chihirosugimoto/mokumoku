@@ -25,15 +25,16 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @user = current_user
   end
 
   def create
+    @user = current_user
     @event = current_user.events.build(event_params)
     if @event.save
       User.all.find_each do |user|
         NotificationFacade.created_event(@event, user)
       end
-
       redirect_to event_path(@event)
     else
       render :new
@@ -42,24 +43,26 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @user = current_user
   end
 
   def edit
     @event = current_user.events.find(params[:id])
+    @user = current_user
   end
 
   def update
     @event = current_user.events.find(params[:id])
+    @user = current_user
     if @event.update(event_params)
       redirect_to event_path(@event)
     else
       render :edit
     end
   end
-
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail)
+    params.require(:event).permit(:title, :content,:only_woman, :held_at, :prefecture_id, :thumbnail)
   end
 end
