@@ -8,6 +8,6 @@ ja:
         liked_event: あなたのイベントにいいねがついた時
     user:
       gender:
-        Lgtm: LGBT
-        man: 男性
-        woman: 女性
+        lgbt: 'LGBT'
+        man: '男性'
+        woman: '女性'
