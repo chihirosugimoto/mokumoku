@@ -19,7 +19,6 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_content('もくもく会を作る')
       end
 
-      
 
       it 'Sign up時に性別(男性)を選んで登録することができる。' do
         visit signup_path
