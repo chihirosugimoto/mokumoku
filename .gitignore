@@ -40,5 +40,5 @@ yarn-debug.log*
 .yarn-integrity
 
 /config/credentials/production.key
-vender/bundle
 coverage/
+vendor/bundle
